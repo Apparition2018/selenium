@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>htmlunit</title>
+    <style>
+        .table {
+            display: table;
+            /*border-collapse: collapse;*/
+        }
+
+        .table-tr {
+            display: table-row;
+        }
+
+        .table-th, .table-td {
+            display: table-cell;
+            padding: 10px 50px;
+            vertical-align: middle;
+            color: #333;
+            text-align: center;
+            border: 1px solid #aaa;
+        }
+
+        .table-th {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+<div id="htmlunit" class="htmlunit">
+    <div id="table" onclick="click()">
+        <div class="table-tr">
+            <div class="table-td" id="title1"></div>
+            <div class="table-td">红豆生南国<br/>春来发几枝<br/>愿君多采撷<br/>此物最相思</div>
+        </div>
+        <div class="table-tr">
+            <div class="table-td" id="title2"></div>
+            <div class="table-td">白日依山尽<br/>黄河入海流<br/>欲穷千里目<br/>更上一层楼</div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+<script>
+    (function() {
+        $.ajax({
+            "url": "/getTitle",
+            "success": function(result) {
+                console.log(result);
+                var titles = result.split('-');
+                document.getElementById('title1').innerText = titles[0];
+                document.getElementById('title2').innerText = titles[1];
+            }
+        });
+    })();
+</script>
+</body>
+</html>
