@@ -44,8 +44,8 @@ public class SeleniumUtils {
         String jsPath;
         String os = System.getProperty("os.name");
         if (os.toLowerCase().contains("windows")) {
-            pjsPath = "C:\\Users\\234607\\IdeaProjects\\com.dayang.subscription\\src\\main\\webapp\\WEB-INF\\phantomjs\\bin\\phantomjs.exe";
-            jsPath = "C:\\Users\\234607\\IdeaProjects\\com.dayang.subscription\\src\\main\\webapp\\WEB-INF\\phantomjs\\exec\\codes.js";
+            pjsPath = System.getProperty("user.dir") + "/src/main/resources/phantomjs/bin/phantomjs.exe";
+            jsPath = System.getProperty("user.dir") + "/src/main/resources/phantomjs/exec/codes.js";
         } else {
             pjsPath = "/usr/local/phantomjs/bin/phantomjs";
             jsPath = "/usr/local/phantomjs/exec/codes.js";
@@ -61,5 +61,9 @@ public class SeleniumUtils {
         }
 
         return sbf.toString();
+    }
+
+    public static void main(String[] args) {
+        System.out.println(System.getProperty("user.dir"));
     }
 }
